@@ -3,7 +3,9 @@
 
 #include "PushPopContainerInterface.h"
 #include "InsertableContainerInterface.h"
-
+#include <iostream>
+#include "string.h"
+using namespace std;
 struct LLIST {
     int value;
     LLIST* next;
@@ -23,7 +25,7 @@ public:
     void set(int index, int value);
     bool isEmpty() const;
     int size() const;
-    char* toString() const;
+    string toString() const;
     virtual ~LinkedList(){
         delete next;
     }

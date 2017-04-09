@@ -1,6 +1,7 @@
 #include <iostream>
 #include "Stack.h"
 #include "LinkedList.h"
+#include "Queue.h"
 using namespace std;
 
 int main() {
@@ -23,18 +24,35 @@ int main() {
     arr1[1]->push(7);
     arr1[1]->push(9);
 
-    LinkedList *ls = new LinkedList;
-    ls->push(2);
-    ls->push(4);
-    ls->push(6);
-    ls->push(7);
-    ls->push(9);
-
-    cout << ls->pop();
-
-    ls->toString();
+//    LinkedList *ls = new LinkedList;
+//    ls->push(2);
+//    ls->push(4);
+//    ls->push(6);
+//    ls->push(7);
+//    ls->push(9);
+//    cout << ls->pop();
+//
+//    ls->toString();
 //    arr1[1]->toString();
 
+
+    arr1[2] = new Queue();
+
+    arr1[2]->push(1);
+    arr1[2]->push(2);
+    arr1[2]->push(3);
+    arr1[2]->push(4);
+    arr1[2]->push(5);
+    arr1[2]->push(6);
+
+    cout << arr1[2]->toString();
+
+    cout << arr1[2]->pop() << endl;
+
+    cout << arr1[2]->toString();
+
+
+    cout << "SIze is: " << arr1[2]->size();
 
     return 0;
 }

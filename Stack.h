@@ -1,6 +1,10 @@
 #ifndef LAB2OOP_STACK_H
 #define LAB2OOP_STACK_H
 #include "PushPopContainerInterface.h"
+#include <iostream>
+#include "string.h"
+using namespace std;
+
 
 struct STACK {
     int value;
@@ -16,7 +20,7 @@ public :
         int peek() const;
         int size() const;
         bool isEmpty() const;
-        char* toString() const;
+        string toString() const;
 
         virtual ~Stack(){
             delete next;

@@ -1,6 +1,9 @@
 #include "Stack.h"
+#include <iostream>
+#include "string.h"
+using namespace std;
 
-char* Stack::toString() const {
+string Stack::toString() const {
 
 }
 

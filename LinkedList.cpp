@@ -1,7 +1,8 @@
 #include "LinkedList.h"
 #include <iostream>
-
-char* LinkedList::toString() const {
+#include "string.h"
+using namespace std;
+string LinkedList::toString() const {
     LLIST *tmp = next;
 
     if (tmp == NULL) {
