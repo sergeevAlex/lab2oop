@@ -22,7 +22,7 @@ public :
     int size() const;
     bool isEmpty() const;
     string toString() const;
-    virtual ~Queue() {}
+    virtual ~Queue() {delete begin;}
 
 };
 

@@ -5,15 +5,17 @@ using namespace std;
 
 string Queue::toString() const {
     string s;
-
     QUEUE *temp = begin;
     while(temp!= NULL){
         s += to_string(temp->key);
         s += "->";
         temp = temp->next;
     }
+
     s += "NULL\n";
+
     return s;
+
 }
 
 int Queue::pop() {
@@ -70,7 +72,6 @@ int Queue::size() const {
     }
     return counter;
 }
-
 
 bool Queue::isEmpty() const {
 

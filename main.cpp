@@ -2,6 +2,7 @@
 #include "Stack.h"
 #include "LinkedList.h"
 #include "Queue.h"
+#include "StaticArray.h"
 using namespace std;
 
 int main() {
@@ -52,7 +53,17 @@ int main() {
     cout << arr1[2]->toString();
 
 
-    cout << "SIze is: " << arr1[2]->size();
+//    cout << "SIze is: " << arr1[2]->size();
 
+    arr2[1] = new StaticArray(5);
+
+    arr2[1]->set(0,1);
+    arr2[1]->set(1,5);
+    arr2[1]->set(2,6);
+    arr2[1]->set(3,8);
+    arr2[1]->set(4,9);
+
+    cout << "Size: " << arr2[1]->size() << endl;
+    cout <<    arr2[1]->toString();
     return 0;
 }
