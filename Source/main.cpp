@@ -1,15 +1,19 @@
 #include <iostream>
-#include "Stack.h"
-#include "LinkedList.h"
-#include "Queue.h"
-#include "StaticArray.h"
+#include "../Header/Stack.h"
+#include "../Header/LinkedList.h"
+#include "../Header/Queue.h"
+#include "../Header/StaticArray.h"
+#include "../Header/StaticDeque.h"
+
 using namespace std;
 
 int main() {
-    PushPopContainerInterface* arr1[5];
+    PushPopContainerInterface* arr1[3];
     IndexedContainerInterface* arr2[3]; //How to check removeAt?!
+    DequeInterface* arr3[3];
     arr1[0] = new Stack();
     arr2[0] = new LinkedList();
+    arr3[0] = new StaticDeque(5);
 
 //    for(int i =0;i<10;i++){
 //        arr1[0]->push(i+1);
@@ -32,13 +36,11 @@ int main() {
 //    ls->push(7);
 //    ls->push(9);
 //    cout << ls->pop();
-//
 //    ls->toString();
 //    arr1[1]->toString();
 
 
     arr1[2] = new Queue();
-
     arr1[2]->push(1);
     arr1[2]->push(2);
     arr1[2]->push(3);
@@ -52,11 +54,9 @@ int main() {
 
     cout << arr1[2]->toString();
 
-
 //    cout << "SIze is: " << arr1[2]->size();
 
     arr2[1] = new StaticArray(5);
-
     arr2[1]->set(0,1);
     arr2[1]->set(1,5);
     arr2[1]->set(2,6);
@@ -65,5 +65,9 @@ int main() {
 
     cout << "Size: " << arr2[1]->size() << endl;
     cout <<    arr2[1]->toString();
+
+
+    cout << "STATICDEQUE : :: : :: : :: : :: : " << endl;
+
     return 0;
 }
