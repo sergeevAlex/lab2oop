@@ -2,11 +2,7 @@
 #define LAB2OOP_STATICDEQUE_H
 
 #include "DequeInterface.h"
-class outofArraylenght: public exception {
-    virtual const char* what() const throw(){
-        return "Вышли за максимальное количество элементов";
-    }
-} ExtraArray;
+
 
 
 class StaticDeque: public virtual DequeInterface{
@@ -14,15 +10,19 @@ class StaticDeque: public virtual DequeInterface{
 private:
     int* arr;
     int MAX;
-    int length = 0;
+    int dequeSize = 0;
 
 public:
     StaticDeque(int number){
         MAX = 1000;
-        length = number;
+        dequeSize = number;
         if(number <= MAX){
-            arr = new int[length];}
-        else throw ExtraArray;
+            arr = new int[dequeSize];
+        for(int i =0;i<dequeSize;i++){
+            arr[i] = 0;
+
+        }}
+        else throw "OverMax";
     }
     bool pushFront(int value);
     bool pushBack(int value);

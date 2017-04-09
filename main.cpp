@@ -1,9 +1,9 @@
 #include <iostream>
-#include "../Header/Stack.h"
-#include "../Header/LinkedList.h"
-#include "../Header/Queue.h"
-#include "../Header/StaticArray.h"
-#include "../Header/StaticDeque.h"
+#include "Header/Stack.h"
+#include "Header/LinkedList.h"
+#include "Header/Queue.h"
+#include "Header/StaticArray.h"
+#include "Header/StaticDeque.h"
 
 using namespace std;
 
@@ -12,6 +12,8 @@ int main() {
     IndexedContainerInterface* arr2[3]; //How to check removeAt?!
     DequeInterface* arr3[3];
     arr1[0] = new Stack();
+    arr2[1] = new StaticArray(140);
+    arr1[2] = new Queue();
     arr2[0] = new LinkedList();
     arr3[0] = new StaticDeque(5);
 
@@ -40,7 +42,6 @@ int main() {
 //    arr1[1]->toString();
 
 
-    arr1[2] = new Queue();
     arr1[2]->push(1);
     arr1[2]->push(2);
     arr1[2]->push(3);
@@ -56,18 +57,32 @@ int main() {
 
 //    cout << "SIze is: " << arr1[2]->size();
 
-    arr2[1] = new StaticArray(5);
     arr2[1]->set(0,1);
     arr2[1]->set(1,5);
     arr2[1]->set(2,6);
     arr2[1]->set(3,8);
     arr2[1]->set(4,9);
 
-    cout << "Size: " << arr2[1]->size() << endl;
-    cout <<    arr2[1]->toString();
-
+//    cout << "Size: " << arr2[1]->size() << endl;
+//    cout <<    arr2[1]->toString() << endl;
 
     cout << "STATICDEQUE : :: : :: : :: : :: : " << endl;
 
+    arr3[0]->pushFront(1);
+    arr3[0]->pushFront(2);
+//    arr3[0]->pushFront(3);
+//    arr3[0]->pushFront(4);
+//    arr3[0]->pushFront(5);
+
+
+    arr3[0]->pushBack(100);
+    arr3[0]->pushBack(200);
+    arr3[0]->pushBack(300);
+
+    cout <<  arr3[0]->toString() << endl;
+
+    cout << "popFront: "  << arr3[0]->popFront() << endl;
+
+    cout <<  arr3[0]->toString() << endl;
     return 0;
 }
