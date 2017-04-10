@@ -15,7 +15,11 @@ public:
         MAX = 1000;
         length = number;
         if(number <= MAX){
-        arr = new int[length];}
+        arr = new int[length];
+        for(int i =0;i<length;i++){
+            arr[i] = 0;
+        }
+        }
 else throw "Переполнение стэка";
     }
     int get(int index) const;
@@ -26,7 +30,6 @@ else throw "Переполнение стэка";
 
     virtual ~StaticArray(){
         delete [] arr;
-
     }
 };
 

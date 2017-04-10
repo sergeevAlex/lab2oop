@@ -2,8 +2,26 @@
 #include <iostream>
 #include "string.h"
 using namespace std;
+struct STACK
+{
+int value;
+STACK* next;
+};
 
 string Stack::toString() const {
+    string s;
+    STACK *temp = next;
+    while(temp != NULL){
+        s += to_string(temp->value);
+        s += "->";
+        temp = temp->next;
+        if(temp->next == NULL) break;
+
+    }
+
+    s += "\nNULL";
+
+    return s;
 
 }
 

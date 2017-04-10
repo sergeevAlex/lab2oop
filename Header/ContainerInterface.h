@@ -1,4 +1,3 @@
-
 #ifndef LAB2OOP_CONTAINERINTERFACE_H
 #define LAB2OOP_CONTAINERINTERFACE_H
 #include <iostream>

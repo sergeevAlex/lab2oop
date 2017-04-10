@@ -12,7 +12,7 @@ string Queue::toString() const {
         temp = temp->next;
     }
 
-    s += "NULL\n";
+    s += "NULL";
 
     return s;
 

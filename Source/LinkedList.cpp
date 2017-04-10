@@ -3,26 +3,28 @@
 #include "string.h"
 using namespace std;
 string LinkedList::toString() const {
+    string s;
     LLIST *tmp = next;
 
     if (tmp == NULL) {
-        cout << "EMPTY" << endl;
-
+        s = "EMPTY";
+        return s;
+//        cout << "EMPTY" << endl;
     }
 
     if (tmp->next == NULL) {
-        cout << tmp->value;
-        cout << " --> ";
-        cout << "NULL" << endl;
+        s.append(to_string(tmp->value));
+        s.append( " --> ");
+        s.append("NULL");
     }
     else {
         do {
-            cout << tmp->value;
-            cout << " --> ";
+
+            s.append(to_string(tmp->value));
+            s.append("-->");
             tmp = tmp->next;
         }
         while (tmp != NULL);
-        cout << "NULL" << endl;
     }
 }
 bool LinkedList::isEmpty() const {

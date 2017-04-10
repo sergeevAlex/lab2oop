@@ -1,9 +1,6 @@
 #ifndef LAB2OOP_STATICDEQUE_H
 #define LAB2OOP_STATICDEQUE_H
-
 #include "DequeInterface.h"
-
-
 
 class StaticDeque: public virtual DequeInterface{
 
@@ -17,11 +14,8 @@ public:
         MAX = 1000;
         dequeSize = number;
         if(number <= MAX){
-            arr = new int[dequeSize];
-        for(int i =0;i<dequeSize;i++){
-            arr[i] = 0;
-
-        }}
+            arr = new int[number]{0};
+ }
         else throw "OverMax";
     }
     bool pushFront(int value);
@@ -33,7 +27,6 @@ public:
     int size() const;
     bool isEmpty() const;
     string toString() const;
-
     virtual ~StaticDeque(){}
 };
 

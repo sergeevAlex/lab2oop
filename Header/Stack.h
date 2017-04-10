@@ -4,12 +4,7 @@
 #include <iostream>
 #include "string.h"
 using namespace std;
-
-
-struct STACK {
-    int value;
-    STACK* next;
-};
+struct STACK;
 
 class Stack: public virtual PushPopContainerInterface {
 private: STACK *next;
@@ -21,11 +16,9 @@ public :
         int size() const;
         bool isEmpty() const;
         string toString() const;
-
         virtual ~Stack(){
             delete next;
         }
-
 };
 
 #endif //LAB2OOP_STACK_H
