@@ -4,20 +4,25 @@
 #include <iostream>
 #include "string.h"
 using namespace std;
+template <typename T>
 struct STACK;
 
-class Stack: public virtual PushPopContainerInterface {
-private: STACK *next;
+template <class T>
+class Stack: public virtual PushPopContainerInterface<T> {
+private: STACK<T> *next;
 public :
-        Stack(){}
-        bool push(int value);
-        int pop();
-        int peek() const;
+        Stack<T>(){}
+        Stack(Stack<T>& s);
+        bool push(const T& value);
+        T pop();
+        T peek() const;
         int size() const;
         bool isEmpty() const;
         string toString() const;
-        virtual ~Stack(){
-            delete next;
+        T& peek();
+        Stack<T>& operator=(const Stack& st);
+    virtual ~Stack<T>(){
+           delete next;
         }
 };
 

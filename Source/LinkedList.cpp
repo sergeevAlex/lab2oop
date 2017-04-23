@@ -1,40 +1,50 @@
 #include "../Header/LinkedList.h"
 #include <iostream>
 #include "string.h"
+#include <sstream>
 using namespace std;
-string LinkedList::toString() const {
+template <typename T>
+string LinkedList<T>::toString() const {
     string s;
-    LLIST *tmp = next;
-
+    ostringstream  ostr;
+    LLIST<T> *tmp = next;
     if (tmp == NULL) {
         s = "EMPTY";
         return s;
-//        cout << "EMPTY" << endl;
     }
-
     if (tmp->next == NULL) {
-        s.append(to_string(tmp->value));
-        s.append( " --> ");
-        s.append("NULL");
+//        s.append(to_string(tmp->value));
+//        s.append( " --> ");
+//        s.append("NULL");
+        ostr << tmp->value << "-->" << "NULL";
+        s = ostr.str();
     }
     else {
-        do {
-
-            s.append(to_string(tmp->value));
-            s.append("-->");
+        while(tmp != NULL) {
+            ostr << tmp->value << "-->";
+            s = ostr.str();
             tmp = tmp->next;
         }
-        while (tmp != NULL);
+
     }
+    s += "NULL";
+    return s;
+
 }
-bool LinkedList::isEmpty() const {
+
+template <typename T>
+bool LinkedList<T>::isEmpty() const {
     return next == NULL;
 }
-int LinkedList::pop() { if(next!=NULL)
+
+template <typename T>
+T LinkedList<T>::pop() { if(next!=NULL)
     {return next->value;}
     else return NULL;}
-int LinkedList::peek() const {
-    LLIST *tmp = next;
+
+template <typename T>
+T LinkedList<T>::peek() const {
+    LLIST<T> *tmp = next;
     while(tmp){
         if(tmp->next == NULL){
             return tmp->value;
@@ -43,28 +53,27 @@ int LinkedList::peek() const {
     }
 }
 
-bool LinkedList::push(int value) {
-
+template <typename T>
+bool LinkedList<T>::push(const T& value) {
        if(next != NULL) {
-           LLIST *tmp = new LLIST;
+           LLIST<T> *tmp = new LLIST<T>;
            tmp->value = value;
            tmp->next = next;
            next = tmp;
        }
+
     else {
-           next = new LLIST;
+           next = new LLIST<T>;
            next->value = value;
            next->next = NULL;
-
        }
 }
 
-
-
-int  LinkedList::get(int index) const {
+template <typename T>
+T  LinkedList<T>::get(int index) const {
     int counter = 0;
-    int tmp_data = 0;
-    LLIST *tmp2 = next;
+    T tmp_data = 0;
+    LLIST<T> *tmp2 = next;
     while(tmp2){
         if(index == counter){ tmp_data = tmp2->value; break;}
         else tmp2= tmp2->next;
@@ -72,16 +81,17 @@ int  LinkedList::get(int index) const {
     }
     return tmp_data;
 }
-bool LinkedList::insertAt(int index, int value) {
-    LLIST *ins = new LLIST;
+template <typename T>
+bool LinkedList<T>::insertAt(int index,const T& value) {
+    LLIST<T> *ins = new LLIST<T>;
     ins->value = value;
     if(next == NULL){
         ins->next = NULL;
         next = ins;
         return true;
     }
-    LLIST *t = next;
-    LLIST *t1 = next;
+    LLIST<T> *t = next;
+    LLIST<T> *t1 = next;
     int counter = 0;
     while(t){
         if(index == counter){
@@ -94,31 +104,32 @@ bool LinkedList::insertAt(int index, int value) {
     }
     t->next = ins;
     ins->next = NULL;
-
-
-
 }
 
-void LinkedList::set(int index, int value) {
+
+template <typename T>
+void LinkedList<T>::set(int index, const T& value) {
     int counter = 0;
-    LLIST *tmp = next;
+    LLIST<T> *tmp = next;
     while(tmp){
         if(index == counter){ tmp->value = value; break;}
         else tmp = tmp->next;
+        counter++;
     }
 
 }
-
-int  LinkedList::removeAt(int index) {
+template <typename T>
+T  LinkedList<T>::removeAt(int index)
+{
     int counter = 0;
-    int tmp_data = 0;
-    LLIST *tmp2 = next;
+    T tmp_data;
+    LLIST<T> *tmp2 = next;
         while(tmp2){
             if(index == counter){ tmp_data = tmp2->value; break;}
             else tmp2 = tmp2->next;
             counter++;
         }
-        LLIST *tmp = next;
+        LLIST<T> *tmp = next;
         if(tmp == NULL){
             cout << "Node is empty!" << endl;
             return 0;
@@ -126,28 +137,54 @@ int  LinkedList::removeAt(int index) {
         if(tmp->value == tmp_data){
             next = tmp->next;
             delete tmp;
-            return 1;
+            return NULL;
         }
 
-        LLIST *tmp1 = tmp->next;
+        LLIST<T> *tmp1 = tmp->next;
         while(tmp1)
         {
             if(tmp1->value == tmp_data){
                 tmp->next  = tmp1->next;
                 delete tmp1;
-                return 1;
+                return NULL;
             }
             tmp = tmp1;
             tmp1 = tmp1->next;
         }
-        }
+}
 
-int  LinkedList::size() const {
+template <typename T>
+int  LinkedList<T>::size() const {
     int index = 0;
-    LLIST *temp = next;
+    LLIST<T> *temp = next;
     while(temp){
         temp  = temp->next;
         index++;
     }
     return index;
+}
+
+template <typename T>
+T& LinkedList<T>::peek() {
+//some realisation :(
+}
+
+template <typename T>
+LinkedList<T>& LinkedList<T>::operator=(const LinkedList &ll) {
+    next = NULL;
+    LLIST<T> *temp = ll.next;
+    while(temp != NULL){
+        push(temp->value);
+        temp = temp->next;
+    }
+}
+
+template <typename T>
+LinkedList<T>::LinkedList(const LinkedList &ll) {
+    next = NULL;
+    LLIST<T> *temp = ll.next;
+    while(temp != NULL){
+        push(temp->value);
+        temp = temp->next;
+    }
 }

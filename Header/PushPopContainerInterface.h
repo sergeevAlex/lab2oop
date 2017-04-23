@@ -1,11 +1,12 @@
 #ifndef LAB2OOP_PUSHPOPCONTAINERINTERFACE_H
 #define LAB2OOP_PUSHPOPCONTAINERINTERFACE_H
 #include "ContainerInterface.h"
-
+template <typename T>
 class PushPopContainerInterface: public virtual ContainerInterface  {
-public :    virtual int pop() = 0;
-            virtual int peek() const = 0;
-            virtual bool push(int value) = 0;
+public :    virtual T pop() = 0;
+            virtual T peek() const = 0;
+            virtual T& peek() = 0;
+            virtual bool push(const T& value) = 0;
             virtual ~PushPopContainerInterface() {}
 
 };

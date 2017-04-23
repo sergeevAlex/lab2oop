@@ -3,15 +3,17 @@
 
 #include "ContainerInterface.h"
 
-
+template <typename T>
 class DequeInterface: public virtual ContainerInterface  {
 
-public :   virtual bool pushFront(int value) = 0;
-    virtual bool pushBack(int value) = 0;
-    virtual int popFront() = 0;
-    virtual int popBack() = 0;
-    virtual int peekFront() const = 0;
-    virtual int peekBack() const = 0;
+public :   virtual bool pushFront(const T& value) = 0;
+    virtual bool pushBack(const T& value) = 0;
+    virtual T popFront() = 0;
+    virtual T& peekFront() = 0;
+    virtual T& peekBack() = 0;
+    virtual T popBack() = 0;
+    virtual T peekFront() const = 0;
+    virtual T peekBack() const = 0;
     virtual ~DequeInterface(){}
 };
 

@@ -1,45 +1,43 @@
 #include "../Header/Queue.h"
 #include <iostream>
 #include "string.h"
+#include <sstream>
 using namespace std;
-
-string Queue::toString() const {
+template <typename T>
+string Queue<T>::toString() const {
     string s;
-    QUEUE *temp = begin;
-    while(temp!= NULL){
-        s += to_string(temp->key);
-        s += "->";
+    QUEUE<T> *temp = begin;
+    ostringstream  ostr;
+    while(temp != NULL){
+        ostr << temp->key << "<-";
+        s = ostr.str();
         temp = temp->next;
     }
-
     s += "NULL";
-
     return s;
-
 }
 
-int Queue::pop() {
-
-    int temp = begin->key;
-    QUEUE *t = begin;
+template<typename T>
+T Queue<T>::pop() {
+    T temp = begin->key;
+    QUEUE<T> *t = begin;
     begin = begin->next;
     delete t;
     return temp;
-
 }
-
-int Queue::peek() const {
+template<typename T>
+T Queue<T>::peek() const {
     return begin->key;  //Просто возвращает последний элемент, без выброса его! :)
 }
-
-bool Queue::push(int value) {
-    QUEUE *p = new QUEUE;
+template<typename T>
+bool Queue<T>::push(const T& value) {
+    QUEUE<T> *p = new QUEUE<T>;
     p->key = value;
     p->next = NULL;
 
     if(begin == NULL)
     {
-        begin = new QUEUE;
+        begin = new QUEUE<T>;
         begin = p;
         begin->back = NULL;
     }
@@ -49,7 +47,7 @@ bool Queue::push(int value) {
                 begin->next = p;
                 break;
             }
-            QUEUE *temp = begin;
+            QUEUE<T> *temp = begin;
             begin = begin->next;
             begin->back = temp;
         }
@@ -63,8 +61,10 @@ bool Queue::push(int value) {
     }
 }
 
-int Queue::size() const {
-    QUEUE *temp = begin;
+
+template<typename T>
+int Queue<T>::size() const {
+    QUEUE<T> *temp = begin;
     int counter = 0;
     while(temp){
         counter++;
@@ -73,10 +73,34 @@ int Queue::size() const {
     return counter;
 }
 
-bool Queue::isEmpty() const {
+template<typename T>
+bool Queue<T>::isEmpty() const {
 
     return begin == NULL;
 
 }
 
+template<typename T>
+T& Queue<T>::peek() {
+    //some realisation
+}
 
+template<typename T>
+Queue<T>::Queue(const Queue<T> &qt) {
+    begin = NULL;
+    QUEUE<T> *temp = qt.begin;
+    while(temp != NULL){
+        push(temp->key);
+        temp = temp->next;
+    }
+}
+
+template<typename T>
+Queue<T>& Queue<T>::operator=(const Queue<T> &qt) {
+    begin = NULL;
+    QUEUE<T> *temp = qt.begin;
+    while(temp != NULL){
+        push(temp->key);
+        temp = temp->next;
+    }
+}

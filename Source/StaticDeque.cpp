@@ -1,7 +1,7 @@
 #include "../Header/StaticDeque.h"
 
-
-string StaticDeque::toString() const{
+template<typename T>
+string StaticDeque<T>::toString() const{
     string s;
     for(int i = 0; i < dequeSize; i++){
 //        s.append(to_string(arr[i]));
@@ -12,18 +12,19 @@ string StaticDeque::toString() const{
     }
     return s;
 }
-
-void swap(int & a, int & b)
+template<typename T>
+void swapp(T  a, T & b)
 {
-    int temp = a;
+    T temp = a;
     a = b;
     b = temp;
 }
-
-bool StaticDeque::pushFront(int value){
+template<typename T>
+bool StaticDeque<T>::pushFront(const T& value){
     if(dequeSize == MAX) return false;
     for(int i = dequeSize-1; i>=0; --i){
-      swap(arr[i],arr[i+1]);
+      swapp(arr[i],arr[i+1]);
+
 //        arr[i+1] = arr[i];
     }
 
@@ -32,40 +33,75 @@ bool StaticDeque::pushFront(int value){
 
 }
 
-
-bool StaticDeque::pushBack(int value){
+template<typename T>
+bool StaticDeque<T>::pushBack(const T& value){
     if(dequeSize == MAX) return false;
     dequeSize++;
     arr[dequeSize] = value;
     return true;
 }
 
-int StaticDeque::popFront(){
-    int res1 = arr[0];
+template<typename T>
+T StaticDeque<T>::popFront(){
+    T res1 = arr[0];
     for(int i = 1; i<dequeSize+1;i++){
-        swap(arr[i],arr[i-1]);
+        swapp(arr[i],arr[i-1]);
     }
     dequeSize--;
     return res1;
 }
+template<typename T>
 
-int StaticDeque::popBack(){
-    int res = arr[dequeSize];
-    arr[dequeSize] = NULL;
+T StaticDeque<T>::popBack(){
+    T res = arr[dequeSize];
+    arr[dequeSize] = {};
     dequeSize--;
     return res;
 }
+template<typename T>
 
-int StaticDeque::peekFront() const{
+T StaticDeque<T>::peekFront() const{
+
     return arr[0];
 }
+template<typename T>
 
-int StaticDeque::peekBack() const{
+T StaticDeque<T>::peekBack() const{
     return arr[dequeSize-1];
 }
+template<typename T>
 
-int StaticDeque::size() const{return dequeSize+1;}
+int StaticDeque<T>::size() const{return dequeSize+1;}
+template<typename T>
 
-bool StaticDeque::isEmpty() const{
+bool StaticDeque<T>::isEmpty() const{
     return dequeSize ==0;
+}
+template<typename T>
+T& StaticDeque<T>::peekFront() {
+
+}
+template<typename T>
+T& StaticDeque<T>::peekBack(){
+}
+
+template<typename T>
+StaticDeque<T>& StaticDeque<T>::operator=(const StaticDeque &sd) {
+    MAX = 1000;
+    dequeSize = sd.dequeSize;
+    arr = new T[dequeSize];
+    for(int i = 0;i < dequeSize;i++){
+        arr[i] = sd.arr[i];
+    }
+}
+
+template<typename T>
+StaticDeque<T>::StaticDeque(const StaticDeque &sd) {
+    MAX = 1000;
+    dequeSize = sd.dequeSize;
+    arr = new T[dequeSize];
+    for(int i = 0;i < dequeSize;i++){
+        arr[i] = sd.arr[i];
+    }
+
 }

@@ -2,11 +2,11 @@
 #define LAB2OOP_STATICARRAY_H
 
 #include "IndexedContainerInterface.h"
-
-class StaticArray:public virtual IndexedContainerInterface{
+template<typename T>
+class StaticArray:public virtual IndexedContainerInterface<T>{
 
 private:
-    int* arr;
+    T* arr;
     int MAX;
     int length = 0;
 
@@ -15,18 +15,21 @@ public:
         MAX = 1000;
         length = number;
         if(number <= MAX){
-        arr = new int[length];
-        for(int i =0;i<length;i++){
-            arr[i] = 0;
-        }
+        arr = new T[length]{};
+
         }
 else throw "Переполнение стэка";
     }
-    int get(int index) const;
-    void set(int index, int value);
+    T get(int index) const;
+    void set(int index, const T& value);
     int size() const;
     bool isEmpty() const;
     string toString() const;
+
+    T& get(int index);
+
+    StaticArray(const StaticArray& sa);
+    StaticArray<T>& operator=(const StaticArray& sa);
 
     virtual ~StaticArray(){
         delete [] arr;

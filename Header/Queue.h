@@ -4,24 +4,28 @@
 #include "string.h"
 using namespace std;
 #include "PushPopContainerInterface.h"
-
+template <typename T>
 struct QUEUE{
-    int key;
+    T key;
     QUEUE* next;
     QUEUE* back;
 };
-
-class Queue: public virtual PushPopContainerInterface{
-private: QUEUE *begin;
+template <typename T>
+class Queue: public virtual PushPopContainerInterface<T>{
+private: QUEUE<T> *begin;
 
 public :
-    Queue(){begin = NULL;}
-    int pop();
-    int peek() const;
-    bool push(int value);
+    Queue<T>(){begin = NULL;}
+    T pop();
+    T peek() const;
+    bool push(const T& value);
     int size() const;
     bool isEmpty() const;
     string toString() const;
+    T& peek();
+    Queue<T>(const Queue<T>& qt);
+    Queue<T>& operator=(const Queue<T>& qt);
+
     virtual ~Queue() {delete begin;}
 
 };

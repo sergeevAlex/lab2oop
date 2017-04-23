@@ -1,11 +1,12 @@
 #ifndef LAB2OOP_STATICDEQUE_H
 #define LAB2OOP_STATICDEQUE_H
 #include "DequeInterface.h"
+template <typename T>
 
-class StaticDeque: public virtual DequeInterface{
+class StaticDeque: public virtual DequeInterface<T>{
 
 private:
-    int* arr;
+    T* arr;
     int MAX;
     int dequeSize = 0;
 
@@ -14,19 +15,23 @@ public:
         MAX = 1000;
         dequeSize = number;
         if(number <= MAX){
-            arr = new int[number]{0};
+            arr = new T[number]{};
  }
         else throw "OverMax";
     }
-    bool pushFront(int value);
-    bool pushBack(int value);
-    int popFront();
-    int popBack();
-    int peekFront() const;
-    int peekBack() const;
+    bool pushFront(const T& value);
+    bool pushBack(const T& value);
+    T popFront();
+    T popBack();
+    T peekFront() const;
+    T peekBack() const;
     int size() const;
     bool isEmpty() const;
     string toString() const;
+    T& peekFront();
+    T& peekBack();
+    StaticDeque(const StaticDeque& sd);
+    StaticDeque<T>& operator=(const StaticDeque &sd);
     virtual ~StaticDeque(){}
 };
 
