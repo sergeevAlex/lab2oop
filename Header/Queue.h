@@ -23,9 +23,9 @@ public :
     bool isEmpty() const;
     string toString() const;
     T& peek();
+//    using ContainerInterface::operator<<;
     Queue<T>(const Queue<T>& qt);
     Queue<T>& operator=(const Queue<T>& qt);
-
     virtual ~Queue() {delete begin;}
 
 };

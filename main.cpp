@@ -119,6 +119,22 @@ int main() {
 //    cout << l2->toString();
 
 
+//    Queue<double> qd;
+//
+//    qd.push(28.9);
+//    qd.push(23.7);
+//
+//     cout << qd;
+
+//    StaticDeque<double> sd(3);
+//
+//    sd.pushFront(26);
+//    sd.pushFront(26);
+//    sd.pushFront(26);
+//
+//
+//    cout << sd;
+
 //    StaticArray<string>* st = new StaticArray<string>(10); ++
 //
 //    st->set(0,"SomeInfo");

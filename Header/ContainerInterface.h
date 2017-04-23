@@ -11,12 +11,18 @@ public:   virtual int size() const = 0;
           virtual bool isEmpty() const {
                     return size() == 0;
           }
-       ostream& operator<<(ostream& os){
-        os << this->toString();
+
+        friend ostream& operator<<(ostream& os, const ContainerInterface& ci){
+         os << ci.toString();
         return os;
          }
-     virtual string toString() const = 0;
-     virtual ~ContainerInterface(){};
+
+        friend bool operator==(const ContainerInterface& c1,const ContainerInterface& c2){
+            return c1==c2; //Contains the equals elements
+        }
+
+        virtual string toString() const = 0;
+        virtual ~ContainerInterface(){};
 };
 
 

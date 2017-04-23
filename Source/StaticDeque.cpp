@@ -1,14 +1,14 @@
 #include "../Header/StaticDeque.h"
+#include <sstream>
 
 template<typename T>
-string StaticDeque<T>::toString() const{
+string StaticDeque<T>::toString() const {
     string s;
-    for(int i = 0; i < dequeSize; i++){
-//        s.append(to_string(arr[i]));
-//        s.append("<-->");
-        cout <<  "[";
-        cout << arr[i];
-        cout << "]";
+//    ostringstream  ostr;
+    for(int i = 0; i < dequeSize-1; i++){
+        s+= "[";
+        s+= to_string(arr[i]);
+        s+= "] ";
     }
     return s;
 }
