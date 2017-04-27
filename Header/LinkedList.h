@@ -5,7 +5,7 @@
 #include "InsertableContainerInterface.h"
 #include <iostream>
 #include "string.h"
-
+#include "JavaIteratorInterface.h"
 using namespace std;
 template <typename T>
 struct LLIST {
@@ -52,10 +52,22 @@ public:
 //            delete temp;
 //            temp = tt;
 //        }
-
         delete next;
     }
-
     T& peek();
 };
+
+template<typename T>
+class LinkedListIterator : public virtual JavaIteratorInterface<T>{
+private: LLIST<T> *next;
+public:
+    T Next() {
+    T value = next->value;
+    next = next->next;
+    }
+    bool hasNext() const{
+       return next == nullptr;
+    }
+};
+
 #endif //LAB2OOP_LINKEDLIST_H

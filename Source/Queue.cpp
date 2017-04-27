@@ -3,19 +3,38 @@
 #include "string.h"
 #include <sstream>
 using namespace std;
-template <typename T>
-string Queue<T>::toString() const {
-    string s;
-    QUEUE<T> *temp = begin;
-    ostringstream  ostr;
-    while(temp != NULL){
-        ostr << temp->key << "<-";
-        s = ostr.str();
-        temp = temp->next;
-    }
-    s += "NULL";
-    return s;
-}
+
+//
+//template <typename string>
+//string Queue<string>::toString() const {
+//    string s;
+//    QUEUE<string> *temp = begin;
+//    ostringstream  ostr;
+//    while(temp != NULL){
+//        ostr << temp->key << "!!!!!!!";
+//        s = ostr.str();
+//        temp = temp->next;
+//    }
+//    s += "NULL";
+//    return s;
+//}
+
+//template <typename T>
+//string Queue<T>::toString() const {
+////    string s;
+////    QUEUE<T> *temp = begin;
+////    ostringstream  ostr;
+////    while(temp != NULL){
+////        ostr << temp->key << "<-";
+////        s = ostr.str();
+////        temp = temp->next;
+////    }
+////    s += "NULL";
+////    return s;
+//}
+
+
+
 
 template<typename T>
 T Queue<T>::pop() {
@@ -82,7 +101,7 @@ bool Queue<T>::isEmpty() const {
 
 template<typename T>
 T& Queue<T>::peek() {
-    //some realisation
+    return begin->key;
 }
 
 template<typename T>

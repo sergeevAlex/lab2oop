@@ -4,7 +4,7 @@
 #include "ContainerInterface.h"
 
 template <typename T>
-class DequeInterface: public virtual ContainerInterface  {
+class DequeInterface: public virtual ContainerInterface<T>  {
 
 public :   virtual bool pushFront(const T& value) = 0;
     virtual bool pushBack(const T& value) = 0;

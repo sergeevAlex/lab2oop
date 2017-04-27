@@ -3,11 +3,13 @@
 
 
 template<typename T>
-class JavaIteratorInterface {
+class JavaIteratorInterface{
 public:
-    virtual T next() = 0;
+
+    virtual T Next() = 0;
     virtual bool hasNext() const = 0;
     virtual ~JavaIteratorInterface(){}
+
 };
 
 

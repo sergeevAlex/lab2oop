@@ -166,7 +166,11 @@ int  LinkedList<T>::size() const {
 
 template <typename T>
 T& LinkedList<T>::peek() {
-//some realisation :(
+
+    if(next!=NULL)
+    {return next->value;}
+    else return NULL;
+
 }
 
 template <typename T>

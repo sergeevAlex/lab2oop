@@ -3,7 +3,7 @@
 
 #include "ContainerInterface.h"
 template <typename T>
-class IndexedContainerInterface: public virtual ContainerInterface {
+class IndexedContainerInterface: public virtual ContainerInterface<T> {
 public :
     virtual T get(int index) const = 0;
     virtual T& get(int index) = 0;

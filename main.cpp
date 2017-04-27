@@ -12,22 +12,16 @@
 using namespace std;
 int main() {
 
-
 //    Stack<double>* s1 = new Stack<double>();
-//
 //    s1->push(2.4);
 //    s1->push(25.7);
-//
 //    s1->toString();
-//
 //    Stack<string>* st = new Stack<string>();
 //    st->push("hey");
 //    st->push("how are u? ");
 //    cout << st->toString();
-//
 
     /* Stack override '=' testing!  */
-//
 //    Stack<double> s1;
 //    s1.push(522.8);
 //    s1.push(633.9);
@@ -46,7 +40,7 @@ int main() {
 //    qt.push(27.9);
 //
 //
-////    Queue<double> qt2(qt);
+////      Queue<double> qt2(qt);
 //      Queue<double> qt2;
 //
 //    qt2 = qt;
@@ -54,11 +48,17 @@ int main() {
 //
 //    qt.push(11);
 //
-//    cout << qt2.toString();
+//    cout << qt2 << endl;
 
-
-
-    /* StaticArray override '=' testing!  */
+//
+//LinkedList<double> st;
+//
+//    st.push(26.8);
+//    st.push(27.0);
+//    LinkedList<double> st2(st);
+//
+//    cout << st2;
+//    /* StaticArray override '=' testing!  */
 
 //    StaticArray<double> st(10);
 //
@@ -72,6 +72,16 @@ int main() {
 
     /* StaticDeque override '=' testing!  */
 
+//    Stack<string> st;
+
+//    Queue<string> qt;
+//
+//    qt.push("Hello");
+//    qt.push(" World");
+//
+//    cout << qt;
+
+//    cout << st;
 
 //    StaticDeque<int> st(10);
 //    st.pushFront(6);
@@ -83,8 +93,56 @@ int main() {
 //    st2 = st;
 //    st2.toString();
 
-    /* LinkedList override '=' testing!  */
 
+//    StaticArray<int> st(10);
+//
+//    st.get(0) = 1;
+//
+//    cout << st;
+
+
+//    Stack<string> st;
+//
+//    st.push("Where is your labs?");
+//    st.push("LazY!");
+//
+//    cout << st;
+
+/* IteratorTesting  */
+//    Queue<double> st;
+//
+//    st.push(11);
+//
+//    st.push(23);
+//
+//    Queue<double> st1;
+//
+//    st1.push(11);
+//
+//    st1.push(23);
+//
+////    cout << (st == st1);
+//
+///*    cout << st == st1; */
+//
+//    auto it =  st1.createIteratorConst();
+//
+//    cout << st1;
+
+
+//    while(it->hasNext()){
+////        cout << it->Next() << endl;
+//    }
+//    delete it;
+
+    Stack<string> st;
+
+
+    st.push("Hello");
+    st.push("How are u?");
+    st.push("Enjoy it!");
+
+//    cout << st; //реализовать итератор :)
 //    LinkedList<double> ll;
 //
 //    ll.push(22.7);
@@ -94,7 +152,6 @@ int main() {
 //    LinkedList<double> ll1;
 //    ll1 = ll;
 //    cout << ll1.toString();
-
 
 //    LinkedList<double>* l1 = new LinkedList<double>();
 //

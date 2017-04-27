@@ -25,9 +25,7 @@ void StaticArray<T>::set(int index, const T& value) {
     arr[index] = value;
 }
 template<typename T>
-T& StaticArray<T>::get(int index) {
-    return arr[index];
-}
+T& StaticArray<T>::get(int index) { return arr[index]; }
 
 template<typename T>
 StaticArray<T>::StaticArray(const StaticArray &sa) {
