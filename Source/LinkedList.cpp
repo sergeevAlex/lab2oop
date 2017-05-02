@@ -3,34 +3,34 @@
 #include "string.h"
 #include <sstream>
 using namespace std;
-template <typename T>
-string LinkedList<T>::toString() const {
-    string s;
-    ostringstream  ostr;
-    LLIST<T> *tmp = next;
-    if (tmp == NULL) {
-        s = "EMPTY";
-        return s;
-    }
-    if (tmp->next == NULL) {
-//        s.append(to_string(tmp->value));
-//        s.append( " --> ");
-//        s.append("NULL");
-        ostr << tmp->value << "-->" << "NULL";
-        s = ostr.str();
-    }
-    else {
-        while(tmp != NULL) {
-            ostr << tmp->value << "-->";
-            s = ostr.str();
-            tmp = tmp->next;
-        }
-
-    }
-    s += "NULL";
-    return s;
-
-}
+//template <typename T>
+//string LinkedList<T>::toString() const {
+//    string s;
+//    ostringstream  ostr;
+//    LLIST<T> *tmp = next;
+//    if (tmp == NULL) {
+//        s = "EMPTY";
+//        return s;
+//    }
+//    if (tmp->next == NULL) {
+////        s.append(to_string(tmp->value));
+////        s.append( " --> ");
+////        s.append("NULL");
+//        ostr << tmp->value << "-->" << "NULL";
+//        s = ostr.str();
+//    }
+//    else {
+//        while(tmp != NULL) {
+//            ostr << tmp->value << "-->";
+//            s = ostr.str();
+//            tmp = tmp->next;
+//        }
+//
+//    }
+//    s += "NULL";
+//    return s;
+//
+//}
 
 template <typename T>
 bool LinkedList<T>::isEmpty() const {
@@ -166,11 +166,7 @@ int  LinkedList<T>::size() const {
 
 template <typename T>
 T& LinkedList<T>::peek() {
-
-    if(next!=NULL)
-    {return next->value;}
-    else return NULL;
-
+    return next->value;
 }
 
 template <typename T>

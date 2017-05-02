@@ -3,10 +3,10 @@
 #include "DequeInterface.h"
 #include "JavaIteratorInterface.h"
 template <typename T>
-
 class StaticDequeIterator;
 template <typename T>
-
+class StaticDequeIteratorConst;
+template <typename T>
 class StaticDeque: public virtual DequeInterface<T>{
 
 private:
@@ -16,14 +16,27 @@ private:
 
 public:
     friend class StaticDequeIterator<T>;
+    friend class StaticDequeIteratorConst<T>;
+
     StaticDeque(int number){
-        MAX = 1000;
+        MAX = 100;
         dequeSize = number;
         if(number <= MAX){
             arr = new T[number]{};
- }
+            for(int i = 0; i < MAX;i++){
+            arr[i]= 0;
+            }
+        }
         else throw "OverMax";
     }
+    JavaIteratorInterface<const T&>* createIteratorConst() const {
+        return new StaticDequeIteratorConst<T>(*this);
+    }
+
+    JavaIteratorInterface<T&>* createIterator() {
+        return new StaticDequeIterator<T>(*this);
+    }
+
     bool pushFront(const T& value);
     bool pushBack(const T& value);
     T popFront();
@@ -32,29 +45,48 @@ public:
     T peekBack() const;
     int size() const;
     bool isEmpty() const;
-    string toString() const;
+//    string toString() const;
     T& peekFront();
     T& peekBack();
     StaticDeque(const StaticDeque& sd);
     StaticDeque<T>& operator=(const StaticDeque &sd);
-    virtual ~StaticDeque(){}
+    virtual ~StaticDeque(){
+    }
 };
 
 
 template<typename T>
-class StaticDequeIterator: public virtual JavaIteratorInterface<T> {
-private:         int index = 0;
+class StaticDequeIteratorConst: public virtual JavaIteratorInterface<const T&> {
+private:  T* arr;
+    int index;
+    int size;
+public:
+    StaticDequeIteratorConst(const StaticDeque<T>& st):arr(st.arr),index(0),size(st.size()){}
+    const T& Next(){
+        return arr[index++];
+    }
+    bool hasNext() const {
+        return size != index;
+    }
+
+};
+
+
+
+template<typename T>
+class StaticDequeIterator: public virtual JavaIteratorInterface<T&> {
+private:  T* arr;
+    int index;
+    int size;
 
 public:
-
-    T Next(StaticDeque<T> obj){
-        T value  =  obj.arr[index];
-        if(index < obj.size() ){
-            index++;}
-        return value;
+    StaticDequeIterator(StaticDeque<T>& st):arr(st.arr),index(0),size(st.size()){}
+    T& Next(){
+        return arr[index++];
     }
-    bool hasNext(StaticDeque<T> obj){
-        return obj.arr[index++]==NULL;
+    bool hasNext() const
+    {
+        return size!=index;
     }
 };
 #endif //LAB2OOP_STATICDEQUE_H

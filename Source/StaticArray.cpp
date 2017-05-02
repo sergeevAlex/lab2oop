@@ -1,15 +1,15 @@
 #include "../Header/StaticArray.h"
 #include <sstream>
-template<typename T>
-string StaticArray<T>::toString() const {
-   string s;
-    ostringstream  ostr;
-    for(int i =0;i<length;i++){
-        ostr << "[" << arr[i] << "] ";
-        s = ostr.str();
-    }
-    return s;
-}
+//template<typename T>
+//string StaticArray<T>::toString() const {
+//   string s;
+//    ostringstream  ostr;
+//    for(int i =0;i<length;i++){
+//        ostr << "[" << arr[i] << "] ";
+//        s = ostr.str();
+//    }
+//    return s;
+//}
 
 template<typename T>
 bool StaticArray<T>::isEmpty() const { return length==0; }

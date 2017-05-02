@@ -1,17 +1,17 @@
 #include "../Header/StaticDeque.h"
 #include <sstream>
 
-template<typename T>
-string StaticDeque<T>::toString() const {
-    string s;
-//    ostringstream  ostr;
-    for(int i = 0; i < dequeSize-1; i++){
-        s+= "[";
-        s+= to_string(arr[i]);
-        s+= "] ";
-    }
-    return s;
-}
+//template<typename T>
+//string StaticDeque<T>::toString() const {
+//    string s;
+////    ostringstream  ostr;
+//    for(int i = 0; i < dequeSize-1; i++){
+//        s+= "[";
+//        s+= to_string(arr[i]);
+//        s+= "] ";
+//    }
+//    return s;
+//}
 template<typename T>
 void swapp(T  a, T & b)
 {

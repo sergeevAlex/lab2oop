@@ -1,0 +1,21 @@
+    /*<T>
+     *  T max(Container<T> const& c) {
+     *
+     *      Iterator<const &T *it = c.createIterator();
+     *      if(it->hasNext){
+     *      T m = c->next();
+     *      while(it->hasNext){
+     *      T const& el = it->Next();
+     *      if(el > m) m = e;
+     *      }
+     *     }
+     *
+     *     delete it;
+     *     return m;
+     *
+     *      }
+     *      }
+     *
+     *  }
+     *
+     * */
