@@ -46,5 +46,5 @@ StaticArray<T>& StaticArray<T>::operator=(const StaticArray &sa) {
     for(int i = 0;i < length;i++){
         arr[i] = sa.arr[i];
     }
-
+return (*this);
 }

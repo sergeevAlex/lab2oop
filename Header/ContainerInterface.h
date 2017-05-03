@@ -13,7 +13,7 @@ public:   virtual int size() const = 0;
           virtual bool isEmpty() const {
                     return size() == 0;
           }
-        friend ostream& operator<<(ostream& os, const ContainerInterface& ci){
+        friend ostream& operator<<(ostream& os, const ContainerInterface<T>& ci) {
             os << ci.toString();
         return os;
          }
@@ -35,10 +35,9 @@ public:   virtual int size() const = 0;
         ContainerInterface& Swap(int index1,int index2){
             JavaIteratorInterface<const T&>* iterator3 = this->createIteratorConst();
             JavaIteratorInterface<T&>* iterator2 = this->createIterator();
-
             int i = 0;
-            T cur1 = NULL;
-            T cur2 = NULL;
+            T cur1;
+            T cur2;
             while(iterator3->hasNext()) {
                 T test = iterator3->Next();
                 if (index1 == i) {
@@ -78,11 +77,12 @@ public:   virtual int size() const = 0;
         return *this;
         }
 
+
         virtual void SelectionSort(){
             int ssize = size();
             for(int i = 0; i < ssize; i++){
                 JavaIteratorInterface<const T&>* iterator1 = this->createIteratorConst();
-                T maxIndex = i;
+                int maxIndex = i;
                 T el;
                 for(int k=0; k < i+1;k++){
                     el = iterator1->Next();
@@ -92,15 +92,12 @@ public:   virtual int size() const = 0;
                     if(el < temp){
                         maxIndex = j;
                         el = temp;
-
                     }
                 }
-
                 if(i == maxIndex){ continue;}else{
                 Swap(i,maxIndex);}
                 delete iterator1;
             }
-
         }
 
         virtual string toString() const {

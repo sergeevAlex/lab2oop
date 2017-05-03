@@ -23,9 +23,9 @@ public:
         dequeSize = number;
         if(number <= MAX){
             arr = new T[number]{};
-            for(int i = 0; i < MAX;i++){
-            arr[i]= 0;
-            }
+//            for(int i = 0; i < MAX;i++){
+//            arr[i] = T();
+//            }
         }
         else throw "OverMax";
     }

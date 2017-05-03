@@ -64,7 +64,6 @@ public:
 };
 
 
-
 template<typename T>
 class StaticArrayIterator: public virtual JavaIteratorInterface<T&> {
 private:  T* arr;

@@ -11,17 +11,45 @@
 #include "Source/StaticDeque.cpp"
 using namespace std;
 int main() {
-//    LinkedList<double> st;
-//    Stack<double> st;
-//    st.push(22.7);
-//    st.push(3535.67);
-//    st.push(1.0);
-//    st.push(0.777777777);
+
+
+
+//
+//    LinkedList<string> st;
+//    st.push("bsbdbdb");
+//    st.push("test");
+//    st.push("eleven");
+//    st.push("twelve");
+////    st.push(22.7);
+////    st.push(3535.67);
+////    st.push(1.0);
+////    st.push(0.777777777);
 //    cout << st << endl;
 //
-//    st.SelectionSort();
+//    ContainerInterface<string>* ci = &st;
+//    ci->SelectionSort();
 //
-//    cout << st;
+//    cout << *ci;
+
+
+    StaticArray<string> st(5);
+
+    st[0] = "Hello!";
+    st[1] = "World";
+
+    cout << st << endl;
+
+    st.SelectionSort();
+
+    cout << st;
+
+    StaticArray<string> st1(5);
+//    st1[0] = "World";
+    st1[1] = "Hello!";
+    cout << endl;
+    cout << (st1=st);
+
+
 
 //    StaticArray<double> st(5);
 //
