@@ -37,6 +37,10 @@ public:
         return new StaticDequeIterator<T>(*this);
     }
 
+
+    typedef StaticDequeIterator<T> iterator;
+    typedef StaticDequeIteratorConst<T> const_iterator;
+
     bool pushFront(const T& value);
     bool pushBack(const T& value);
     T popFront();

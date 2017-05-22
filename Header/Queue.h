@@ -33,7 +33,8 @@ public :
 //    string toString() const;
     T& peek();
     Queue<T>(const Queue<T>& qt);
-
+    typedef QueueIterator<T> iterator;
+    typedef QueueIteratorConst<T> iteratorConst;
     JavaIteratorInterface<const T&>* createIteratorConst() const {
        return new QueueIteratorConst<T>(*this);
     }

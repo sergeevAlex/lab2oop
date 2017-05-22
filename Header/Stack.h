@@ -27,18 +27,21 @@ public :
         bool push(const T& value);
         T pop();
         T peek() const;
-        JavaIteratorInterface<const T&>* createIteratorConst() const {
+    typedef StackIterator<T> iterator;
+    typedef StackIteratorConst<T> const_iterator;
+
+    JavaIteratorInterface<const T&>* createIteratorConst() const {
             return new StackIteratorConst<T>(*this);
         }
-        JavaIteratorInterface<T&>* createIterator() {
+    JavaIteratorInterface<T&>* createIterator() {
             return new StackIterator<T>(*this);
         }
+
         int size() const;
     bool isEmpty() const;
 //        string toString() const;
         T& peek();
         Stack<T>& operator=(const Stack& st);
-
         virtual ~Stack<T>(){
            delete next;
         }
@@ -67,7 +70,6 @@ template <typename T>
 class StackIterator: public virtual JavaIteratorInterface<T&>{
 private: STACK<T> *next;
 public:
-
     StackIterator(Stack<T>& st):next(st.next){}
     T& Next(){
         T& value = next->value;

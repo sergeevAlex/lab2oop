@@ -42,6 +42,9 @@ public:
     StaticArray(const StaticArray& sa);
     StaticArray<T>& operator=(const StaticArray& sa);
 
+    typedef StaticArrayIterator<T> iterator;
+    typedef StaticArrayIteratorConst<T> const_iterator;
+
     virtual ~StaticArray(){
         delete [] arr;
     }
